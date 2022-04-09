@@ -1,12 +1,69 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="asset/style.css">
+    <link rel="shortcut icon" href="img/shortcut-icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,800;1,700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width">
     <meta charset="utf-8" />
     <title>{% block title %}Default title{% endblock title %}</title>
 </head>
 <body>
-    <h1>{% block header %}{% endblock header %}</h1>
+<header>
+    <div class="header-logo-block">
+        <div class="container">
+            <div class="header__top-wrapper">
+                <div class="header-logo">
+                    <img src="img/book-logo.svg" alt="" class="header-logo__img">
+                    <p class="header-logo__text">flash-cards</p>
+                </div>
+                <div class="header-logo__login-block">
+                    <button class="login-button style-login-button"><i class="far fa-user"></i></button>
+                    <button class="logout-button style-login-button"><i class="fas fa-sign-out-alt"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-navigation">
+        <div class="container">
+            <div class="nav-bar">
+                <div class="category-section">
+                    <nav id="flash-card-button" class="nav-button">Флэш-карты</nav>
+<!-- Блок с выпадающим меню                   <div id="flash-card-block" class="showing">-->
+<!--                        <ul class="category-ul">-->
+<!--                            <li class="category-li"><a href="#1">Категория 1</a></li>-->
+<!--                            <li class="category-li"><a href="#2">Категория 2</a></li>-->
+<!--                            <li class="category-li"><a href="#3">Категория 3</a></li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+                </div>
+<!--   Блок с выпадающим меню                 <div id="different-block" class="showing">-->
+<!--                        <ul class="category-ul">-->
+<!--                            <li class="category-li">Категория 1</li>-->
+<!--                            <li class="category-li">Категория 2</li>-->
+<!--                            <li class="category-li">Категория 3</li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+            </div>
+                <div class="search">
+                    <form method="GET" action="#" class="search-form">
+                        <label for="main-search" class="visibility-hidden">Flash-cards search</label>
+                        <input id="main-search" type="search" name="q" placeholder="Поиск" class="search-input"><label for="main-search" class="before-search"></label>
+                    </form>
+                </div>
+            </div>
+        </div>
+</header>
     <div>{% block content%}{% endblock content %}</div>
-    <div>Footer</div>
+<footer>
+    <div class="background-footer-up">
+        <p class="footer-text"><strong>* футер В разработке *</strong></p>
+    </div>
+    <div class="background-footer-down"></div>
+</footer>
 </body>
 </html>

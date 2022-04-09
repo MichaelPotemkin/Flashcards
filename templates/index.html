@@ -1,5 +1,70 @@
 {% extends "base.html" %}
 {% block header %}Главная{% endblock header %}
 {% block content %}
-    <h1>HERE BE FLASHCARDS</h1>
+<!-- ИНТРО БЛОК -->
+<div class="intro">
+    <div class="container">
+        <div class="intro__position-blocks">
+            <div class="intro__left-side">
+                <h1 class="intro-title">Английские карточки по темам</h1>
+                <p class="intro__under-title-text">Изучайте наборы карточек по различным темам для пополнения всеобщих знаний, а также создавайте свои собственные</p>
+                <button class="intro-btn">Создать свою коллекцию</button>
+            </div>
+        </div>
+            <div class="intro__right-side">
+                <img src="img/check-man.svg" alt="" class="intro-image">
+            </div>
+    </div>
+</div>
+<div class="quote-block">
+    <h2 class="quote">Тут будет какой-то текст, <strong>который поможет</strong> понять пользователю, зачем ему этот сайт</h2>
+</div>
+<div class="examples-block">
+    <div class="container">
+        <div class="example">
+            <div class="example-block__left-side">
+                <p class="examples-title">Заголовок номер 1</p>
+                <p class="examples-text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce aliquam libero dolor, non dictum nunc fermentum eget.
+                </p>
+                <p class="examples-text">
+                    Vestibulum dictum dui vel nisl pellentesque pretium vel non sapien. Sed pellentesque, felis et fringilla commodo, justo elit porta quam, eget varius.
+                </p>
+            </div>
+            <div class="example-block__right-side">
+                <img src="img/woman.svg" alt="" class="intro-image">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card-section">
+    <div class="cards-wrapper">
+         <div class="card">
+             <p class="pack-rating">3</p>
+             <p class="pack-title p1">Знаки зодиака</p>
+             <button class="pack-btn">Учить слова</button>
+         </div>
+         <div class="card">
+             <p class="pack-rating">2</p>
+             <p class="pack-title p1">Небесные тела</p>
+         </div>
+         <div class="card"></div>
+         <div class="card"></div>
+         <div class="card"></div>
+         <div class="card"></div>
+         <div class="card"></div>
+         <div class="card"></div>
+         <div class="card"></div>
+    </div>
+</div>
+<div class="quote-block second-quote-block">
+    <div class="container">
+        <h2 class="quote second-quote">“Lorem ipsum dolor sit amet, consectetur adipiscing elit”</h2>
+    </div>
+</div>
+<div class="start-button-position">
+    <button class="intro-btn">Начать прямо сейчас</button>
+</div>
+
+    <script src="asset/app.js"></script>
 {% endblock %}
