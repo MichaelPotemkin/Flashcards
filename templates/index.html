@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% block header %}Главная{% endblock header %}
 {% block content %}
 <!-- ИНТРО БЛОК -->
@@ -12,7 +13,7 @@
             </div>
         </div>
             <div class="intro__right-side">
-                <img src="img/check-man.svg" alt="" class="intro-image">
+                <img src={% static "images/check-man.svg" %} alt="" class="intro-image">
             </div>
     </div>
 </div>
