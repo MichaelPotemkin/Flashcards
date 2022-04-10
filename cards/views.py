@@ -7,5 +7,10 @@ def index(request):
     return render(request, "index.html")
 
 
-def pack(request):
-    return HttpResponseRedirect("/")
+def learn(request, pack_id):
+    pack = ...
+    return render(request, 'cards/wheel.html', context={'pack': pack})
+
+
+def edit_pack(request, pack_id):
+    return HttpResponseRedirect(f'/cards/learn/{pack_id}')
