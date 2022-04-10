@@ -20,5 +20,6 @@ from cards import views
 urlpatterns = [
     path('', views.index),
     path('cards/', include('cards.urls')),
+    path('auth/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
 ]
