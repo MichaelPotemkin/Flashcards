@@ -13,7 +13,7 @@
             </div>
         </div>
             <div class="intro__right-side">
-                <img src={% static "images/check-man.svg" %} alt="" class="intro-image">
+                <img alt="" class="intro-image" src={% static "images/check-man.svg" %}>
             </div>
     </div>
 </div>
@@ -33,7 +33,7 @@
                 </p>
             </div>
             <div class="example-block__right-side">
-                <img src="img/woman.svg" alt="" class="intro-image">
+                <img alt="" class="intro-image" src={% static "images/woman.svg" %}>
             </div>
         </div>
     </div>
@@ -67,5 +67,5 @@
     <button class="intro-btn">Начать прямо сейчас</button>
 </div>
 
-    <script src="asset/app.js"></script>
+    <script src={% static "script/app.js" %}></script>
 {% endblock %}

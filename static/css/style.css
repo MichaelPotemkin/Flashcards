@@ -186,7 +186,7 @@ label{
 .before-search:before{
     display: block;
     content: '';
-    background-image: url("/img/Search.svg");
+    background-image: url("../images/Search.svg");
     width: 13px;
     height: 13px;
     background-size: 13px 13px;
@@ -277,7 +277,7 @@ label{
 .second-quote:after{
     display: block;
     content: '';
-    background-image: url("../img/arrow-quote.svg");
+    background-image: url("../images/arrow-quote.svg");
     background-size: 140px;
     width: 140px;
     height: 140px;
@@ -321,7 +321,7 @@ label{
     display: flex;
     justify-content: center;
     margin: 0 auto;
-    width: 70%;
+    width: 900px;
     flex-wrap: wrap;
 }
 
@@ -354,7 +354,7 @@ label{
 .pack-rating:before{
     display: block;
     content: '';
-    background-image: url("../img/Звезда.svg");
+    background-image: url("../images/star.svg");
     width: 14px;
     height: 14px;
     background-size: 14px 14px;
