@@ -1,4 +1,5 @@
 
+
 let triangle_buttons = document.querySelectorAll('.clickable')
 
 function addingTriangle(buttons){
@@ -106,3 +107,6 @@ category_button.addEventListener('click', function (){
         dropDown_category.style.visibility = 'hidden'
     }
 })
+
+
+

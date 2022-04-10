@@ -1,0 +1,7 @@
+{
+  "name": "Diplom Flashcards",
+  "version": "1.0.0",
+  "dependencies": {
+    "swiper": "^8.1.0"
+  }
+}

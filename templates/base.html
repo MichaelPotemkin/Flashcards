@@ -3,6 +3,7 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href={% static 'css/style.css' %}>
+    {% block head_css_wheel %}{% endblock head_css_wheel %}
     <link rel="shortcut icon" href={% static "images/shortcut-icon.png" %}>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,6 +16,8 @@
     <title>{% block title %}Flashcards{% endblock title %}</title>
 </head>
 <body>
+<div class="wrapper">
+<!-- ХЕДЕР -->
 <header>
     <div class="header-logo-block">
         <div class="container">
@@ -61,12 +64,17 @@
         </div>
     </div>
 </header>
-<div>{% block content %}{% endblock content %}</div>
-<footer>
-    <div class="background-footer-up">
-        <p class="footer-text"><strong>* футер В разработке *</strong></p>
+
+    <div class="content">
+        {% block content %}{% endblock content %}
     </div>
-    <div class="background-footer-down"></div>
-</footer>
+    <!-- ФУТЕР -->
+    <footer>
+        <div class="background-footer-up">
+            <p class="footer-text"><strong>* футер В разработке *</strong></p>
+        </div>
+        <div class="background-footer-down"></div>
+    </footer>
+</div>
 </body>
 </html>
