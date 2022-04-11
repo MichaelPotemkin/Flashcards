@@ -2,8 +2,9 @@ from django.urls import path
 from cards import views
 
 urlpatterns = [
-    path('learn/<int:pack_id>', views.view_pack),
-    # path('create/<pack_id>', views.create_pack),
-    # path('edit/<int:pack_id>', views.edit_pack),
-    # path('delete/<int:pack_id>', views.delete_pack),
+    path('', views.index, name='index'),
+    path('learn/<int:pack_id>', views.view_pack, name='learn'),
+    # path('create/<pack_id>', views.create_pack, name='create'),
+    # path('edit/<int:pack_id>', views.edit_pack, name='edit'),
+    # path('delete/<int:pack_id>', views.delete_pack, name='delete'),
 ]

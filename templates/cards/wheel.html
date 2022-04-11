@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block head_css_wheel %}
+{% block head %}
     <link rel="stylesheet" type="text/css" href={% static '/css/wheel.css' %}>
-{% endblock head_css_wheel %}
+{% endblock head %}
 {% block content %}
     <!-- БЛОК СЛАЙДЕРА КАРТ -->
     <div class="swiper-container">
         <div class="swiper-wrapper">
-            <div class="swiper-slide slider-card"></div>
-            <div class="swiper-slide slider-card"></div>
-            <div class="swiper-slide slider-card"></div>
+            {% for card in cards %}
+                <div class="swiper-slide slider-card">{{ card.front_side }}</div>
+            {% endfor %}
         </div>
         <div class="swiper-button-prev card-btn"></div>
         <div class="swiper-button-next card-btn"></div>
