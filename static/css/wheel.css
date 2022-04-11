@@ -1,7 +1,143 @@
-.slider-card{
+.swiper-slide-card{
+    height: 280px;
+    display: flex;
+    justify-content: center;
+}
+.swiper{
+    max-width: 500px;
+}
+
+/*?------ Кнопки слайдера ------?*/
+
+.swiper-button-next, .swiper-button-prev{
+    position: static!important;
+    margin: 0!important;
+    width: 48px!important;
+    height: 48px!important;
+}
+.swiper-button-next{
+    margin-left: 70px!important;
+}
+.swiper-button-prev::after, .swiper-rtl .swiper-button-next::after{
+    content: none!important;
+}
+
+.swiper-button-next::after, .swiper-rtl .swiper-button-prev::after{
+    content: none!important;
+}
+
+.card-btn{
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-left: 40px;
+    border-radius: 50%;
+    border: 2px solid black;
+    width: 48px;
+    height: 48px;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-btn:hover{
+    background: #5e5e5e!important;
+}
+
+.style-icon{
+    color: white!important;
+}
+
+.swiper-buttons{
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.position_swiper_slider{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+    margin-top: 8em;
+}
+
+.the_card{
     width: 180px;
     height: 280px;
-    background: #2A2A2A;
-    border-radius: 2px;
-    margin: 10px 5px;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    position: relative;
+    margin: 10px 0 10px 0;
+    box-shadow: 0 0 8px;
+    border-radius: 16px;
+}
+.the_card.is_flipped{
+    transform: rotateY(180deg);
+}
+.card_face{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    overflow: hidden;
+    border-radius: 16px;
+}
+.face_front{
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.text_front_card{
+    font-size: 16px;
+    margin: 0 10px;
+    font-weight: bold;
+    color: black;
+    user-select: none;
+    text-align: center;
+    word-break: break-word;
+    font-family: monsterrat, sans-serif;
+}
+.text_back_card{
+    font-size: 16px;
+    margin: 0 10px;
+    font-weight: bold;
+    color: black;
+    user-select: none;
+    text-align: center;
+    word-break: break-word;
+    font-family: monsterrat, sans-serif;
+}
+.face_back{
+    background: white;
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+footer{
+    margin-top: 8em;
+}
+
+/*?-------- MEDIA -------?*/
+
+@media (max-width: 510px) {
+
+    .position_swiper_slider{
+        margin-top: 4em;
+    }
+
+    footer{
+        margin-top: 4em;
+    }
+    .swiper{
+    width: 360px;
+    }
+
 }

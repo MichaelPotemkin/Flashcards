@@ -2,16 +2,34 @@
 {% load static %}
 {% block head %}
     <link rel="stylesheet" type="text/css" href={% static '/css/wheel.css' %}>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 {% endblock head %}
 {% block content %}
     <!-- БЛОК СЛАЙДЕРА КАРТ -->
-    <div class="swiper-container">
+<div class="position_swiper_slider">
+    <div class="swiper">
         <div class="swiper-wrapper">
             {% for card in cards %}
-                <div class="swiper-slide slider-card">{{ card.front_side }}</div>
+                <div class="swiper-slide-card swiper-slide">
+                   <div class="the_card">
+                       <div class="card_face face_front">
+                           <p class="text_front_card">hi</p>
+                       </div>
+                       <div class="card_face face_back">
+                           <p class="text_back_card">Привет</p>
+                       </div>
+                   </div>
+                </div>
             {% endfor %}
         </div>
-        <div class="swiper-button-prev card-btn"></div>
-        <div class="swiper-button-next card-btn"></div>
     </div>
+<div class="swiper-buttons">
+        <div class="swiper-button-prev card-btn"><span class="style-icon"><i class="fas fa-chevron-left"></i></span></div>
+        <div class="swiper-button-next card-btn"><span class="style-icon"><i class="fas fa-chevron-right"></i></span></div>
+</div>
+</div>
+
+    <script src={% static "script/app.js" %}></script>
+    <script src={% static "/script/wheel.js" %}></script>
 {% endblock %}

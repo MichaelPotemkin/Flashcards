@@ -1,6 +1,14 @@
-import Swiper from 'swiper';
-import 'swiper/css';
+
+
+// FOR flipper
+
+const cards = document.querySelectorAll('.the_card');
+
+$(".the_card").click(function (){
+    this.classList.toggle('is_flipped');
+})
 
 // Slider for cards
 
-const swiper = new Swiper();
+new Swiper('.swiper');
+
