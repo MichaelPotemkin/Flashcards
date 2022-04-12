@@ -188,6 +188,7 @@ label{
 /*?? -- SEARCH FORM -- ??*/
 .search-form{
     display: flex;
+    position: relative;
 }
 .search-bar{
     display: flex;
@@ -197,10 +198,6 @@ label{
 }
 
 .before-search{
-    position: relative;
-}
-
-.before-search:before{
     display: block;
     content: '';
     background-image: url("../images/Search.svg");
@@ -208,8 +205,15 @@ label{
     height: 13px;
     background-size: 13px 13px;
     position: absolute;
-    left: -20px;
+    right: 10px;
     top: 4px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.before-search:before{
+
 }
 
 /*? ------------- INTRO -------------?*/
@@ -457,6 +461,43 @@ footer{
     .card{
         margin-right: 0;
         margin-left: 0;
+    }
+    /*?------- Адаптив главной страницы -------?*/
+
+    .search{
+        margin-right: 20px;
+    }
+
+    .intro{
+        height: 60vh;
+    }
+
+    .intro__right-side{
+        display: none;
+    }
+    .intro__left-side {
+        width: 85%;
+    }
+
+    .quote{
+        width: 90%;
+        font-size: 22px;
+    }
+
+    .quote-block{
+        margin: 4em 0 4em 0;
+    }
+    .example-block__right-side{
+        display: none;
+    }
+    .example-block__left-side {
+    width: 81%;
+    }
+    footer{
+        margin-top: 5em;
+    }
+    .second-quote::after {
+      display: none;
     }
 }
 
