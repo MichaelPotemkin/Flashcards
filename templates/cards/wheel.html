@@ -7,34 +7,29 @@
 {% endblock head %}
 {% block content %}
     <!-- БЛОК СЛАЙДЕРА КАРТ -->
-    {% if cards %}
-        <div class="position_swiper_slider">
-            <div class="swiper">
-                <div class="swiper-wrapper">
-                    {% for card in cards %}
-                        <div class="swiper-slide-card swiper-slide">
-                            <div class="the_card">
-                                <div class="card_face face_front">
-                                    <p class="text_front_card">hi</p>
-                                </div>
-                                <div class="card_face face_back">
-                                    <p class="text_back_card">Привет</p>
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
+<div class="position_swiper_slider">
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            {% for card in cards %}
+                <div class="swiper-slide-card swiper-slide">
+                   <div class="the_card">
+                       <div class="card_face face_front">
+                           <p class="text_front_card">hi</p>
+                       </div>
+                       <div class="card_face face_back">
+                           <p class="text_back_card">Привет</p>
+                       </div>
+                   </div>
                 </div>
-            </div>
-            <div class="swiper-buttons">
-                <div class="swiper-button-prev card-btn"><span class="style-icon"><i
-                        class="fas fa-chevron-left"></i></span></div>
-                <div class="swiper-button-next card-btn"><span class="style-icon"><i
-                        class="fas fa-chevron-right"></i></span></div>
-            </div>
+            {% endfor %}
         </div>
-    {% else %}
-        <div>Ой, пакич пуст.</div>
-    {% endif %}
+    </div>
+<div class="swiper-buttons">
+        <div class="swiper-button-prev card-btn"><span class="style-icon"><i class="fas fa-chevron-left"></i></span></div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next card-btn"><span class="style-icon"><i class="fas fa-chevron-right"></i></span></div>
+</div>
+</div>
 
     <script src={% static "script/app.js" %}></script>
     <script src={% static "/script/wheel.js" %}></script>

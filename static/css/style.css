@@ -7,6 +7,9 @@ body{
     font-size: 14px;
     min-height: 100vh;
 }
+.special-link-a{
+    text-decoration: none;
+}
 strong{
     color: #DD6D2A;
 }
@@ -376,7 +379,7 @@ label{
 }
 .pack-btn{
     background: linear-gradient(to bottom, #FF910A, #DD6D2A);
-    padding: 10px 16px;
+    padding: 10px 0;
     border: none;
     border-radius: 6px;
     color: white;
@@ -384,11 +387,19 @@ label{
     letter-spacing: 1px;
     position: absolute;
     bottom: 25px;
-
+    margin-left: 6px;
 }
 .pack-btn:hover{
     cursor: pointer;
     background: #ff9c24;
+}
+
+.navigate-cardpack-link{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    padding: 10px 16px;
+    color: #fff;
+    text-decoration: none;
 }
 
 /*? ------------- FOOTER ------------- ?*/
