@@ -10,5 +10,10 @@ $(".the_card").click(function (){
 
 // Slider for cards
 
-new Swiper('.swiper');
+new Swiper('.swiper',{
+    navigation:{
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+    },
+});
 
