@@ -16,10 +16,10 @@
                         <div class="swiper-slide-card swiper-slide">
                             <div class="the_card">
                                 <div class="card_face face_front">
-                                    <p class="text_front_card">hi</p>
+                                    <p class="text_front_card">{{ card.front_side }}</p>
                                 </div>
                                 <div class="card_face face_back">
-                                    <p class="text_back_card">Привет</p>
+                                    <p class="text_back_card">{{ card.flip_side }}</p>
                                 </div>
                             </div>
                         </div>
@@ -37,7 +37,10 @@
     {% else %}
         <div>Ой, добавьте, пожалуйста, карточки</div>
     {% endif %}
-
+    <form method="POST" action="{% url 'like_pack' pack.pk %}">
+    {% csrf_token %}
+    <button type="submit" name="pack_id" value="{{ pack.id }}">Like {{ pack.total_likes }}</button>
+    </form>
 
     <script src={% static "script/app.js" %}></script>
     <script src={% static "/script/wheel.js" %}></script>
