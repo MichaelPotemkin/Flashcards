@@ -1,4 +1,28 @@
 
+let cards_array = document.querySelectorAll('.card')
+
+window.addEventListener('resize', function() {
+  console.log("Размер окна изменен");
+  someFunc();
+});
+
+let counter_card = 0
+// Выполняем действие, если ширина меньше 1000px
+var w = window.innerWidth;
+if (w < 1000) {
+    for (let card of cards_array){
+    if (counter_card > 2){
+        card.style.visibility = 'hidden'
+        card.style.position = 'absolute'
+    }
+    counter_card++
+}
+}
+
+console.log(cards_array)
+
+
+
 
 let triangle_buttons = document.querySelectorAll('.clickable')
 
