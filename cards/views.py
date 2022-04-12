@@ -17,7 +17,7 @@ def view_pack(request, pack_id):
 
 
 def edit_pack(request, pack_id):
-    return HttpResponseRedirect(f'/cards/learn/{pack_id}')
+    return HttpResponseRedirect(f'learn/{pack_id}')
 
 
 def delete_pack(request, pack_id):

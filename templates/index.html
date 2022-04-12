@@ -44,12 +44,11 @@
     </div>
     <div class="card-section">
         <div class="cards-wrapper">
-
             {% for pack in packs %}
                 <div class="card">
                     <p class="pack-rating">{{ pack.rating }}</p>
                     <p class="pack-title p1">{{ pack.title }}</p>
-                    <button class="pack-btn">Учить слова</button>
+                    <button class="pack-btn"><a href="learn/{{ pack.id }}">Учить слова</a></button>
                 </div>
             {% endfor %}
         </div>
