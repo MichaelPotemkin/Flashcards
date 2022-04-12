@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import Pack, Flashcard, Like
+from .models import Pack, Flashcard
 from django.db.models import Count
 
 
@@ -17,7 +17,7 @@ def view_pack(request, pack_id):
 
 
 def edit_pack(request, pack_id):
-    return HttpResponseRedirect(f'learn/{pack_id}')
+    ...
 
 
 def delete_pack(request, pack_id):
