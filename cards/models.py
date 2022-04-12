@@ -8,6 +8,9 @@ class Pack(models.Model):
     description = models.CharField(max_length=300, null=True)
     likes = models.ManyToManyField(User, through="Like", related_name='pack_likes')
 
+    def total_likes(self):
+        return self.likes.count()
+
     def __str__(self):
         return self.title
 

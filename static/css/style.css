@@ -376,7 +376,7 @@ label{
 .pack-rating:before{
     display: block;
     content: '';
-    background-image: url("../images/STAR1.svg");/*star.svg*/
+    background-image: url("../images/STAR1.svg");
     width: 14px;
     height: 14px;
     background-size: 14px 14px;

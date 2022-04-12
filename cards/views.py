@@ -1,7 +1,9 @@
-from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
-from .models import Pack, Flashcard
 from django.db.models import Count
+from django.http import HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404
+from django.urls import reverse
+
+from .models import Pack, Flashcard, Like
 
 
 # Create your views here.
@@ -13,7 +15,8 @@ def index(request):
 def view_pack(request, pack_id):
     pack = Pack.objects.get(id=pack_id)
     cards = Flashcard.objects.filter(pack_id=pack_id)
-    return render(request, 'cards/wheel.html', context={'pack': pack, 'cards': cards})
+    return render(request, 'cards/wheel.html',
+                  context={'pack': pack, 'cards': cards})
 
 
 def edit_pack(request, pack_id):
@@ -26,3 +29,12 @@ def delete_pack(request, pack_id):
 
 def create_pack(request):
     ...
+
+
+def like_pack(request, pk):
+    pack = get_object_or_404(Pack, id=request.POST.get('pack_id'))
+    like, created = Like.objects.get_or_create(pack_id=pack, user_id=request.user)
+    if not created:
+        like.delete()
+
+    return HttpResponseRedirect(reverse('learn', args=[str(pk)]))
