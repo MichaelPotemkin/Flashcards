@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% if user.is_authenticated %}
+        {% if user == pack.author_id %}
+            {#add editing#}
+            <h1>You can edit.</h1>
+        {% else %}
+            <h1>You don't have permission to edit this pack.</h1>
+        {% endif %}
+    {% else %}
+        <h1>Please log in.</h1>
+    {% endif %}
+{% endblock %}

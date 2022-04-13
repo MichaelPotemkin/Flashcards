@@ -1,8 +1,7 @@
 from django.db.models import Count
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
-
 from .models import Pack, Flashcard, Like
 
 
@@ -20,7 +19,9 @@ def view_pack(request, pack_id):
 
 
 def edit_pack(request, pack_id):
-    ...
+    pack = Pack.objects.get(id=pack_id)
+    cards = Flashcard.objects.filter(pack_id=pack_id)
+    return render(request, 'cards/edit.html', context={'pack': pack, 'cards': cards})
 
 
 def delete_pack(request, pack_id):

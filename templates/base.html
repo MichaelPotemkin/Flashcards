@@ -17,53 +17,68 @@
 </head>
 <body>
 <div class="wrapper">
-<!-- ХЕДЕР -->
-<header>
-    <div class="header-logo-block">
-        <div class="container">
-            <div class="header__top-wrapper">
-                <div class="header-logo">
-                    <a class="special-link-a" href="/"><img class='header-logo__img' alt='head-img' src={% static "images/book-logo.svg" %}></a>
-                    <a class="special-link-a" href="/"><p class="header-logo__text">flash-cards</p></a>
-                </div>
-                <div class="header-logo__login-block">
-                    <button class="login-button style-login-button"><i class="far fa-user"></i></button>
-                    <button class="logout-button style-login-button"><i class="fas fa-sign-out-alt"></i></button>
+    <!-- ХЕДЕР -->
+    <header>
+        <div class="header-logo-block">
+            <div class="container">
+                <div class="header__top-wrapper">
+                    <div class="header-logo">
+                        <a class="special-link-a" href="/"><img class='header-logo__img' alt='head-img'
+                                                                src={% static "images/book-logo.svg" %}></a>
+                        <a class="special-link-a" href="/"><p class="header-logo__text">flash-cards</p></a>
+                    </div>
+                    <div class="header-logo__login-block">
+                        <ul>
+                            {% if user.is_authenticated %}
+                                <li class="nav-button">
+                                    <a href="{% url 'logout' %}">Logout</a>
+                                </li>
+                            {% else %}
+                                <li class="nav-button">
+                                    <a href="{% url 'register' %}">Register</a>
+                                </li>
+                                <li class="nav-button">
+                                    <a href="{% url 'login' %}">Login</a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                        <button class="login-button style-login-button"><i class="far fa-user"></i></button>
+                        <button class="logout-button style-login-button"><i class="fas fa-sign-out-alt"></i></button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="header-navigation">
-        <div class="container">
-            <div class="nav-bar">
-                <div class="category-section">
-                    <nav id="flash-card-button" class="nav-button">Флэш-карты</nav>
-                    <!-- Блок с выпадающим меню                   <div id="flash-card-block" class="showing">-->
-                    <!--                        <ul class="category-ul">-->
-                    <!--                            <li class="category-li"><a href="#1">Категория 1</a></li>-->
-                    <!--                            <li class="category-li"><a href="#2">Категория 2</a></li>-->
-                    <!--                            <li class="category-li"><a href="#3">Категория 3</a></li>-->
-                    <!--                        </ul>-->
-                    <!--                    </div>-->
+        <div class="header-navigation">
+            <div class="container">
+                {#                <div class="nav-bar">#}
+                {#                    <div class="category-section">#}
+                {#                        <nav id="flash-card-button" class="nav-button">Флэш-карты</nav>#}
+                {#                        <!-- Блок с выпадающим меню                   <div id="flash-card-block" class="showing">-->#}
+                {#                        <!--                        <ul class="category-ul">-->#}
+                {#                        <!--                            <li class="category-li"><a href="#1">Категория 1</a></li>-->#}
+                {#                        <!--                            <li class="category-li"><a href="#2">Категория 2</a></li>-->#}
+                {#                        <!--                            <li class="category-li"><a href="#3">Категория 3</a></li>-->#}
+                {#                        <!--                        </ul>-->#}
+                {#                        <!--                    </div>-->#}
+                {#                    </div>#}
+                {#                    <!--   Блок с выпадающим меню                 <div id="different-block" class="showing">-->#}
+                {#                    <!--                        <ul class="category-ul">-->#}
+                {#                    <!--                            <li class="category-li">Категория 1</li>-->#}
+                {#                    <!--                            <li class="category-li">Категория 2</li>-->#}
+                {#                    <!--                            <li class="category-li">Категория 3</li>-->#}
+                {#                    <!--                        </ul>-->#}
+                {#                    <!--                    </div>-->#}
+                {#                </div>#}
+                <div class="search">
+                    <form method="GET" action="#" class="search-form">
+                        <label for="main-search" class="visibility-hidden">Flash-cards search</label>
+                        <input id="main-search" type="search" name="q" placeholder="Поиск" class="search-input">
+                        <button class="before-search"></button>
+                    </form>
                 </div>
-                <!--   Блок с выпадающим меню                 <div id="different-block" class="showing">-->
-                <!--                        <ul class="category-ul">-->
-                <!--                            <li class="category-li">Категория 1</li>-->
-                <!--                            <li class="category-li">Категория 2</li>-->
-                <!--                            <li class="category-li">Категория 3</li>-->
-                <!--                        </ul>-->
-                <!--                    </div>-->
-            </div>
-            <div class="search">
-                <form method="GET" action="#" class="search-form">
-                    <label for="main-search" class="visibility-hidden">Flash-cards search</label>
-                    <input id="main-search" type="search" name="q" placeholder="Поиск" class="search-input">
-                    <button class="before-search"></button>
-                </form>
             </div>
         </div>
-    </div>
-</header>
+    </header>
 
     <div class="content">
         {% block content %}{% endblock content %}
