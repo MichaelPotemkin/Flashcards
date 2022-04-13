@@ -139,6 +139,15 @@
     width: 100%;
 }
 
+.like-position{
+    display: flex;
+    justify-content: center;
+}
+.examples-text{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+}
+
 footer{
     margin-top: 8em;
 }
