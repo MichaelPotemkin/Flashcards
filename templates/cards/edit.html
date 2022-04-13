@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
     {% if user.is_authenticated %}
-        {% if user == pack.author_id %}
+        {% if user == pack.author %}
             {#add editing#}
             <h1>You can edit.</h1>
         {% else %}
