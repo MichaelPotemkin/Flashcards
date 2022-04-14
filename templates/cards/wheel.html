@@ -7,7 +7,12 @@
 {% endblock head %}
 {% block content %}
     <!-- БЛОК СЛАЙДЕРА КАРТ -->
-    <p class="pack-name-p">{{ pack.title }}</p>
+    <p class="pack-name-p">{{ pack.title }}
+        {% if user.is_authenticated and user == pack.author %}
+        - <a href="{% url 'edit' pack_id=pack.id %}"> Edit</a>
+        {% endif %}
+    </p>
+
     {% if cards %}
         <div class="position_swiper_slider">
             <div class="swiper">
@@ -27,17 +32,21 @@
                 </div>
             </div>
             <div class="swiper-buttons">
-                <div class="swiper-button-prev card-btn"><span class="style-icon"><i class="fas fa-chevron-left"></i></span></div>
+                <div class="swiper-button-prev card-btn"><span class="style-icon"><i
+                        class="fas fa-chevron-left"></i></span></div>
                 <div class="swiper-pagination"></div>
-                <div class="swiper-button-next card-btn"><span class="style-icon"><i class="fas fa-chevron-right"></i></span></div></div>
+                <div class="swiper-button-next card-btn"><span class="style-icon"><i
+                        class="fas fa-chevron-right"></i></span></div>
+            </div>
         </div>
     {% else %}
         <div>Ой, добавьте, пожалуйста, карточки</div>
     {% endif %}
     <div class="like-position">
         <form method="POST" action="{% url 'like_pack' pack.pk %}">
-        {% csrf_token %}
-        <button type="submit" name="pack_id" value="{{ pack.id }}"><span class="examples-text">Нравится</span> {{ pack.total_likes }}</button>
+            {% csrf_token %}
+            <button type="submit" name="pack_id" value="{{ pack.id }}"><span
+                    class="examples-text">Нравится</span> {{ pack.total_likes }}</button>
         </form>
     </div>
 

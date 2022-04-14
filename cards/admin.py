@@ -4,15 +4,15 @@ from .models import Pack, Flashcard, Like, User
 
 
 class PackAdmin(admin.ModelAdmin):
-    fields = ['author_id', 'title', 'description']
+    fields = ['author', 'title', 'description']
 
 
 class FlashcardAdmin(admin.ModelAdmin):
-    fields = ['pack_id', 'front_side', 'flip_side']
+    fields = ['pack', 'front_side', 'flip_side']
 
 
 class LikeAdmin(admin.ModelAdmin):
-    fields = ['pack_id', 'user_id']
+    fields = ['pack', 'user']
 
 
 # Register your models here.
