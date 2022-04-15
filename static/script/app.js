@@ -21,6 +21,11 @@ if (w < 1000) {
 
 console.log(cards_array)
 
+let array_inputs = ['register-form-input-username','register-form-input-email','register-form-input-password1','register-form-input-password2']
+
+for (let input of array_inputs) {
+    document.getElementById(input).setAttribute('autocomplete', 'off')
+}
 
 
 
@@ -85,52 +90,6 @@ $(document).on('click', function(e){
 });
 
 
-addingOrangerette(nav_button)
-addingTriangle(triangle_buttons)
-
-let dropDown_flashCard = document.getElementById('flash-card-block')
-let flashCard_button = document.getElementById('flash-card-button')
-
-let different_button = document.getElementById('different-button')
-let dropDown_different = document.getElementById('different-block')
-
-let category_button = document.getElementById('category_button')
-let dropDown_category = document.getElementById('category_block')
-
-dropDown_different.style.visibility = 'hidden'
-dropDown_category.style.visibility = 'hidden'
-
-let width_flsh_btn = flashCard_button.clientWidth
-dropDown_flashCard.style.visibility = 'hidden'
-dropDown_flashCard.style.width = width_flsh_btn + 'px';
-
-flashCard_button.addEventListener('click', function (){
-    if (dropDown_flashCard.style.visibility == 'hidden'){
-        dropDown_flashCard.style.visibility = 'visible'
-    }
-    else {
-        dropDown_flashCard.style.visibility = 'hidden'
-    }
-
-})
-
-different_button.addEventListener('click', function (){
-    if (dropDown_different.style.visibility == 'hidden'){
-        dropDown_different.style.visibility = 'visible'
-    }
-    else {
-        dropDown_different.style.visibility = 'hidden'
-    }
-})
-
-category_button.addEventListener('click', function (){
-    if (dropDown_category.style.visibility == 'hidden'){
-        dropDown_category.style.visibility = 'visible'
-    }
-    else {
-        dropDown_category.style.visibility = 'hidden'
-    }
-})
 
 
 
