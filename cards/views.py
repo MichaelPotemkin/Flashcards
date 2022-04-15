@@ -34,7 +34,7 @@ def create_pack(request):
 
 def like_pack(request, pk):
     pack = get_object_or_404(Pack, id=request.POST.get('pack_id'))
-    like, created = Like.objects.get_or_create(pack_id=pack, user_id=request.user)
+    like, created = Like.objects.get_or_create(pack=pack, user=request.user)
     if not created:
         like.delete()
 
