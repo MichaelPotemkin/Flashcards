@@ -3,7 +3,6 @@ let cards_array = document.querySelectorAll('.card')
 
 window.addEventListener('resize', function() {
   console.log("Размер окна изменен");
-  someFunc();
 });
 
 let counter_card = 0
@@ -21,11 +20,18 @@ if (w < 1000) {
 
 console.log(cards_array)
 
-let array_inputs = ['register-form-input-username','register-form-input-email','register-form-input-password1','register-form-input-password2']
+let array_register_inputs = ['register-form-input-username','register-form-input-email','register-form-input-password1','register-form-input-password2','id_username', 'login-form-input-password']
 
-for (let input of array_inputs) {
-    document.getElementById(input).setAttribute('autocomplete', 'off')
+
+
+for (let input of array_register_inputs) {
+    let cheker = document.getElementById(input)
+    if (cheker){
+        cheker.setAttribute('autocomplete', 'off')
+    }
+
 }
+
 
 
 

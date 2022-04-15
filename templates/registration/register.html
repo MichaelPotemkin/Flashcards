@@ -3,11 +3,14 @@
 {% block title %}Register{% endblock %}
 
 {% block content %}
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button class="intro-btn">Зарегистрироваться</button>
-    </form>
+    <div class="login-position-block">
+        <p>Зарегестрируйте учётную запись</p>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="intro-btn">Зарегистрироваться</button>
+        </form>
+    </div>
 <script src={% static "script/app.js" %}></script>
 {% endblock %}
 
