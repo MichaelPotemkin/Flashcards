@@ -3,10 +3,16 @@
 
 {% block content %}
     <form method="POST">
+<<<<<<< HEAD
         {% csrf_token %}
         <div>
             {{ form.as_p }}
         </div>
         <button>Register</button>
+=======
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="intro-btn">Зарегистрироваться</button>
+>>>>>>> origin/master
     </form>
 {% endblock %}
