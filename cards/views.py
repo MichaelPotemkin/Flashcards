@@ -3,10 +3,18 @@ from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from .models import Pack, Flashcard, Like
+from django.core.mail import send_mail
 
 
 # Create your views here.
 def index(request):
+    send_mail(
+        'Test',
+        'Here is the message.',
+        'me@flashcards.com',
+        ['michael.potyomkin@gmail.com'],
+        fail_silently=False,
+    )
     packs = Pack.objects.annotate(rating=Count('likes')).order_by('-rating', '-id')[:9]
     return render(request, "index.html", context={'packs': packs})
 

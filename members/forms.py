@@ -5,11 +5,6 @@ from django import forms
 
 
 class SignUpForm(UserCreationForm):
-    email = forms.EmailField(
-        label="E-mail",
-        widget=forms.EmailInput()
-
-    )
     password1 = forms.CharField(
         label="Пароль",
         strip=False,
@@ -23,21 +18,12 @@ class SignUpForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'password1', 'password2')
+        fields = ('username', 'password1', 'password2')
 
     def __init__(self, *args, **kwargs):
         super(SignUpForm, self).__init__(*args, **kwargs)
 
         self.fields['username'].help_text = None
         self.fields['username'].widget.attrs['id'] = 'register-form-input-username'
-        self.fields['email'].widget.attrs['id'] = 'register-form-input-email'
         self.fields['password1'].widget.attrs['id'] = 'register-form-input-password1'
         self.fields['password2'].widget.attrs['id'] = 'register-form-input-password2'
-
-
-class LoginForm(AuthenticationForm):
-    def __init__(self, *args, **kwargs):
-        super(LoginForm, self).__init__(*args, **kwargs)
-
-        self.fields['username'].widget.attrs['id'] = 'login-form-input-username'
-        self.fields['password'].widget.attrs['id'] = 'login-form-input-password'
