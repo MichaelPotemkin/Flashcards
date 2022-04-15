@@ -70,18 +70,20 @@ label{
 }
 .header-logo__login-block{
     display: flex;
+    align-items: center;
+    height: 100%;
     position: absolute;
     right: 0;
     bottom: 0;
-    margin-bottom: 10px;
 }
 
 .style-login-button{
     background: none;
     border: none;
     color: white;
-    font-size: 1.5em;
+    font-size: 1.34em;
     margin-right: 16px;
+    text-decoration: none;
 }
 .style-login-button:hover{
     cursor: pointer;
@@ -103,6 +105,18 @@ label{
     cursor: pointer;
 }
 
+.login-position-block{
+    height: 62vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.login-position-block .position-login-btn{
+    display: flex;
+    justify-content: center;
+}
+
 /*? ---------------- HEADER NAV BAR ---------------?*/
 
 .header-navigation{
@@ -113,7 +127,7 @@ label{
 }
 .header-navigation .container{
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
     align-items: center;
 }
 .nav-bar{
@@ -187,6 +201,7 @@ label{
 }
 /*?? -- SEARCH FORM -- ??*/
 .search-form{
+    padding: 8px 0;
     display: flex;
     position: relative;
 }
@@ -194,6 +209,7 @@ label{
     display: flex;
 }
 .search-input{
+    width: 180px;
     position: relative;
 }
 
@@ -205,8 +221,8 @@ label{
     height: 13px;
     background-size: 13px 13px;
     position: absolute;
-    right: 10px;
-    top: 4px;
+    right: 8px;
+    top: 11.5px;
     background-color: white;
     border: none;
     cursor: pointer;
@@ -462,9 +478,17 @@ footer{
         margin-right: 0;
         margin-left: 0;
     }
+    .header-logo__login-block{
+        flex-direction: column;
+        justify-content: center;
+    }
+    .style-login-button{
+        margin-bottom: 10px;
+    }
     /*?------- Адаптив главной страницы -------?*/
 
     .search{
+        padding: 8px!important;
         margin-right: 20px;
     }
 
