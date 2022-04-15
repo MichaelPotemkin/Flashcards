@@ -3,6 +3,7 @@
 
 {% block content %}
     <div class="login-position-block">
+    <p>Войдите в учётную запись</p>
         <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
