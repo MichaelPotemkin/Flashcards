@@ -30,7 +30,7 @@ class SignUpForm(UserCreationForm):
 
         self.fields['username'].label = 'Логин'
         self.fields['username'].help_text = None
-        self.fields['username'].widget.attrs['class'] = 'register-form-input'
-        self.fields['email'].widget.attrs['class'] = 'register-form-input'
-        self.fields['password1'].widget.attrs['class'] = 'register-form-input'
-        self.fields['password2'].widget.attrs['class'] = 'register-form-input'
+        self.fields['username'].widget.attrs['id'] = 'register-form-input-username'
+        self.fields['email'].widget.attrs['id'] = 'register-form-input-email'
+        self.fields['password1'].widget.attrs['id'] = 'register-form-input-password1'
+        self.fields['password2'].widget.attrs['id'] = 'register-form-input-password2'
