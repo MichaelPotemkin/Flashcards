@@ -1,5 +1,5 @@
 from django.contrib.auth import password_validation
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django import forms
 
@@ -28,9 +28,16 @@ class SignUpForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super(SignUpForm, self).__init__(*args, **kwargs)
 
-        self.fields['username'].label = 'Логин'
         self.fields['username'].help_text = None
         self.fields['username'].widget.attrs['id'] = 'register-form-input-username'
         self.fields['email'].widget.attrs['id'] = 'register-form-input-email'
         self.fields['password1'].widget.attrs['id'] = 'register-form-input-password1'
         self.fields['password2'].widget.attrs['id'] = 'register-form-input-password2'
+
+
+class LoginForm(AuthenticationForm):
+    def __init__(self, *args, **kwargs):
+        super(LoginForm, self).__init__(*args, **kwargs)
+
+        self.fields['username'].widget.attrs['id'] = 'login-form-input-username'
+        self.fields['password'].widget.attrs['id'] = 'login-form-input-password'
