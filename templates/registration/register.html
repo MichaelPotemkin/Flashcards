@@ -5,7 +5,7 @@
 {% block content %}
     <div class="login-position-block">
         <p>Зарегестрируйте учётную запись</p>
-        <form method="POST">
+        <form method="POST" class="form-size">
             {% csrf_token %}
             {{ form.as_p }}
             <button class="intro-btn">Зарегистрироваться</button>
