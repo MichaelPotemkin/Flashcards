@@ -118,7 +118,7 @@ label{
 }
 
 .form-size{
-    width: 50%;
+    width: 36%;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -533,6 +533,16 @@ footer{
     }
     .second-quote::after {
       display: none;
+    }
+
+    /*?---- Страница регистрации -----?*/
+
+    .form-size{
+        width: 100%;
+    }
+
+    .form-size .errorlist {
+        width: 50%;
     }
 }
 
