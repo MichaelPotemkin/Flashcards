@@ -4,6 +4,24 @@
         {% if user == pack.author %}
             {#add editing#}
             <h1>You can edit.</h1>
+            <form action="{% url 'edit' pack.id %}" method="POST">
+                {% csrf_token %}
+                <table>
+                    {% for card in cards %}
+                        <tr>
+                            <td><input type="text" value="{{ card.front_side }}"></td>
+                            <td><input type="text" value="{{ card.flip_side }}"></td>
+                        </tr>
+                    {% endfor %}
+                    <tr>
+                        <td>
+{#                            Dynamically add fields#}
+                            <button type="button">Add card</button>
+                        </td>
+                    </tr>
+                </table>
+                <input type="submit">
+            </form>
         {% else %}
             <h1>You don't have permission to edit this pack.</h1>
         {% endif %}
