@@ -1,31 +1,45 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="profile-left-section">
-        <h3>User data</h3>
-        <p>Username: {{ profile_owner.username }}</p>
-        <p>Authored {{ packs|length }} pack(s)</p>
+    <div class="dark-fon">
     </div>
-    <div>
-    <div class="profile-right-section">
-        <h3>Pack list:</h3>
-    <div class="cards-wrapper">
-        {% for pack in packs %}
-            <div class="card">
-                <p class="pack-rating">{{ pack.rating }}</p>
-                <p class="pack-title p1">{{ pack.title }}</p>
-                <button class="pack-btn"><a class="special-link-a navigate-cardpack-link" href="{% url 'learn' pack.id %}">Учить слова</a></button>
-                <ul>
-                    {% if user.is_authenticated and user == profile_owner %}
-                        <li><a href="{% url 'edit' pack.id %}">Edit</a></li>
-                        <li><a href="{% url 'delete' pack.id %}">Delete</a></li>
-                    {% endif %}
-                </ul>
+    <div class="profile-section-wrapper">
+        <div class="profile-left-section">
+            <h3>Данные пользователя</h3>
+            <p class="examples-text">Имя пользователя: {{ profile_owner.username }}</p>
+            <p class="examples-text">Создано {{ packs|length }} набор(ов)</p>
+        </div>
+
+        <div class="profile-right-section">
+        <h3 class="text-align-center">Наборы карт:</h3>
+        <div class="cards-wrapper">
+            {% for pack in packs %}
+                <div class="card">
+                    <p class="pack-rating">{{ pack.rating }}</p>
+                    <p class="pack-title p1">{{ pack.title }}</p>
+                    <button class="pack-btn"><a class="special-link-a navigate-cardpack-link" href="{% url 'learn' pack.id %}">Учить слова</a></button>
+                    <div class="position-additional-butn">
+                        <a href="{% url 'edit' pack.id %}" class="additional-butn"><i class="fa-solid fa-pencil"></i></a>
+                        <button class="additional-butn delete-popup-btn"><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                        {% if user.is_authenticated and user == profile_owner %}
+
+                        {% endif %}
+                </div>
+
+            {% endfor %}
+        </div>
+    </div>
+    </div>
+    <div class="modal-window-wrapper">
+        <div class="modal_window visibility-hidden" id="popup-del">
+            <div class="position-all-popup">
+                <p class="text-popup">Вы точно хотите удалить?</p>
+                <div class="position-cross-btn">
+                    <a href="{% url 'delete' pack.id %}" class="style-confirm-btn">Да</a>
+                    <button class="style-confirm-btn close-popup-btn" id="close-reg">Нет</button>
+                </div>
             </div>
-
-        {% endfor %}
-    </div>
-    </div>
-
+        </div>
     </div>
 {% endblock %}

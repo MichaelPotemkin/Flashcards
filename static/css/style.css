@@ -7,6 +7,13 @@ body{
     font-size: 14px;
     min-height: 100vh;
 }
+.text-align-center{
+    text-align: center;
+}
+.examples-text{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+}
 .special-link-a{
     text-decoration: none;
 }
@@ -461,6 +468,125 @@ footer{
     padding: 0;
 }
 
+.additional-butn{
+    font-size: 16px;
+    background: orange;
+    color: black;
+    border-radius: 50%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    text-decoration: none;
+    margin-right: 8px;
+    border: none;
+    cursor: pointer;
+}
+.additional-butn:last-child{
+    margin-right: 0;
+}
+.position-additional-butn{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 100px;
+    margin-left: 6px;
+}
+
+/*? ---------- СТИЛИ ДЛЯ POP UP ---------- ?*/
+
+.block-scroll{
+    overflow: hidden;
+}
+.dark-fon{
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 110vh;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+}
+.position-all-popup{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.style-confirm-btn{
+    background: linear-gradient(to bottom, #FF910A, #DD6D2A);
+    text-align: center;
+    width: 48px;
+    padding: 10px 0;
+    border: none;
+    border-radius: 16px;
+    color: white;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-right: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.confirm-btn:last-child{
+    margin-right: 0;
+    margin-left: 0;
+}
+.text-popup{
+    text-align: center;
+}
+.modal_window{
+    width: 240px;
+    height: 200px;
+    position: fixed;
+    margin: 0 auto;
+    border-radius: 16px;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background: #fff;
+    top: 50%;
+    transform: translate(0 , -50%);
+}
+.modal-window-wrapper{
+
+}
+.visibility-visible{
+    visibility: visible;
+}
+.visibility-hidden{
+    visibility: hidden;
+}
+.position-cross-btn{
+    display: flex;
+    justify-content: center;
+}
+.close-popup-btn{
+
+}
+.display-block{
+    display: block;
+}
+.display-none{
+    display: none;
+}
+
+/*? ---------- СТИЛИ ДЛЯ СТРАНИЦЫ ПРОФИЛЯ --------- ?*/
+
+.profile-section-wrapper{
+    display: flex;
+}
+.profile-left-section{
+    width: 30%;
+    margin-top: 2em;
+    margin-left: 3em;
+}
+.profile-right-section{
+    width: 70%;
+    margin-top: 2em;
+}
+
 /*?? ------------- MEDIA ------------ ??*/
 
 @media (max-width:1200px) {
@@ -551,6 +677,20 @@ footer{
 
     .form-size .errorlist {
         width: 50%;
+    }
+
+    /*?---- Адаптив страницы профиля -----?*/
+
+    .profile-section-wrapper{
+        flex-direction: column;
+    }
+    .profile-left-section{
+        width: 90%;
+        margin-left: 0;
+        padding-left: 2.5em;
+    }
+    .profile-right-section{
+        width: 100%;
     }
 }
 

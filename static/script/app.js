@@ -21,7 +21,7 @@ if (w < 1000) {
 console.log(cards_array)
 
 
-// Модальное окно для логаута
+// Убираем у инпутов регистации и взода подсказывающее окно
 
 let array_register_inputs = ['register-form-input-username','register-form-input-email','register-form-input-password1','register-form-input-password2','id_username', 'login-form-input-password']
 
