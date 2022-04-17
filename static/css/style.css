@@ -576,6 +576,7 @@ footer{
 
 .profile-section-wrapper{
     display: flex;
+    flex-direction: column;
 }
 .profile-left-section{
     width: 30%;
@@ -583,7 +584,7 @@ footer{
     margin-left: 3em;
 }
 .profile-right-section{
-    width: 70%;
+    width: 100%;
     margin-top: 2em;
 }
 
