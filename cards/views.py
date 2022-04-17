@@ -1,9 +1,8 @@
 from django.db.models import Count
-from django.http import HttpResponseRedirect, HttpResponseForbidden
-from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from .models import Pack, Flashcard, Like, User
-from django.core.mail import send_mail
 
 
 # Create your views here.
@@ -26,7 +25,11 @@ def edit_pack(request, pack_id):
 
 
 def delete_pack(request, pack_id):
-    ...
+    pack = get_object_or_404(Pack, id=pack_id)
+    if request.user == pack.author:
+        pack.delete()
+
+    return redirect(request.META.get("HTTP_REFERER"))
 
 
 def create_pack(request):
@@ -44,6 +47,6 @@ def like_pack(request, pk):
 
 def view_user_profile(request, user_id):
     profile_owner = get_object_or_404(User, id=user_id)
-    packs = Pack.objects.filter(author=profile_owner)
+    packs = Pack.objects.filter(author=profile_owner).annotate(rating=Count('likes')).order_by('-rating')
 
     return render(request, "cards/profile.html", context={'profile_owner': profile_owner, 'packs': packs})
