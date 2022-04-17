@@ -51,15 +51,20 @@ for (let open_button of popup_btns) {
 
 }
 
+//Попапы для удаления набора карт
+
 for (let close_button of close_btns) {
     close_button.addEventListener('click', function (e) {
-        let pop_window_close = document.getElementById('popup-del')
-        if (pop_window_close.classList.contains('visibility-visible')) {
-            pop_window_close.classList.remove('visibility-visible')
-            pop_window_close.classList.add('visibility-hidden')
+        let pop_window_closes = document.querySelectorAll('.popup-del')
+        for (let window of pop_window_closes){
+            if (window.classList.contains('visibility-visible')) {
+            window.classList.remove('visibility-visible')
+            window.classList.add('visibility-hidden')
             document.querySelector('.dark-fon').classList.remove('display-block')
             document.body.classList.remove('block-scroll')
         }
+        }
+
 
     })
 }

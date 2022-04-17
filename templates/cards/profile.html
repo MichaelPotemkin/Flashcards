@@ -17,20 +17,18 @@
                     <div class="card">
                         <p class="pack-rating">{{ pack.rating }}</p>
                         <p class="pack-title p1">{{ pack.title }}</p>
-                        <button class="pack-btn"><a class="special-link-a navigate-cardpack-link"
-                                                    href="{% url 'learn' pack.id %}">Учить слова</a></button>
+                        <button class="pack-btn"><a class="special-link-a navigate-cardpack-link" href="{% url 'learn' pack.id %}">Учить слова</a></button>
+
+                        {% if user.is_authenticated and user == profile_owner %}
                         <div class="position-additional-butn">
-                            <a href="{% url 'edit' pack.id %}" class="additional-butn"><i
-                                    class="fa-solid fa-pencil"></i></a>
+                            <a href="{% url 'edit' pack.id %}" class="additional-butn"><i class="fa-solid fa-pencil"></i></a>
                             <button id="delete-button-{{ pack.id }}" class="additional-butn delete-popup-btn"><i class="fa-solid fa-trash-can"></i>
                             </button>
                         </div>
-                        {% if user.is_authenticated and user == profile_owner %}
-
                         {% endif %}
                     </div>
                     <div class="modal-window-wrapper">
-                        <div class="modal_window visibility-hidden" id="popup-del-{{ pack.id }}">
+                        <div class="modal_window visibility-hidden popup-del" id="popup-del-{{ pack.id }}">
                             <div class="position-all-popup">
                                 <p class="text-popup">Вы точно хотите удалить?</p>
                                 <div class="position-cross-btn">

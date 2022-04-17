@@ -31,7 +31,7 @@
                     <div class="header-logo__login-block">
                         {% if user.is_authenticated %}
                             <div class="user-is-authenticated">
-                                <a href="{% url 'profile' user.id %}" class="login-button style-login-button"><i class="far fa-user"></i></a><button class="login-button style-login-button" id="button-reg"><i class="fas fa-sign-out-alt popup-btn"></i></button>
+                                <a href="{% url 'profile' user.id %}" class="login-button style-login-button"><i class="far fa-user"></i></a><a class="login-button style-login-button" id="button-reg"><i class="fas fa-sign-out-alt popup-btn"></i></a>
                             </div>
                         {% else %}
                                     <a href="{% url 'register' %}" class="login-button style-login-button">Register</a>
