@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div>
+        <h3>User data</h3>
+        <p>Username: {{ profile_owner.username }}</p>
+        <p>Authored {{ packs|length }} pack(s)</p>
+    </div>
+    <div>
+        <h3>Pack list:</h3>
+        {% for pack in packs %}
+            {{ pack.title }}
+            <ul>
+                <li><a href="{% url 'learn' pack.id %}">Learn</a></li>
+                {% if user.is_authenticated and user == profile_owner %}
+                    <li><a href="{% url 'edit' pack.id %}">Edit</a></li>
+                    <li><a href="{% url 'delete' pack.id %}">Delete</a></li>
+                {% endif %}
+            </ul>
+        {% endfor %}
+
+    </div>
+{% endblock %}

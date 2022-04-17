@@ -2,19 +2,12 @@ from django.db.models import Count
 from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
-from .models import Pack, Flashcard, Like
+from .models import Pack, Flashcard, Like, User
 from django.core.mail import send_mail
 
 
 # Create your views here.
 def index(request):
-    send_mail(
-        'Test',
-        'Here is the message.',
-        'me@flashcards.com',
-        ['michael.potyomkin@gmail.com'],
-        fail_silently=False,
-    )
     packs = Pack.objects.annotate(rating=Count('likes')).order_by('-rating', '-id')[:9]
     return render(request, "index.html", context={'packs': packs})
 
@@ -47,3 +40,10 @@ def like_pack(request, pk):
         like.delete()
 
     return HttpResponseRedirect(reverse('learn', args=[str(pk)]))
+
+
+def view_user_profile(request, user_id):
+    profile_owner = get_object_or_404(User, id=user_id)
+    packs = Pack.objects.filter(author=profile_owner)
+
+    return render(request, "cards/profile.html", context={'profile_owner': profile_owner, 'packs': packs})

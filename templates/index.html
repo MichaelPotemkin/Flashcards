@@ -48,7 +48,7 @@
                 <div class="card">
                     <p class="pack-rating">{{ pack.rating }}</p>
                     <p class="pack-title p1">{{ pack.title }}</p>
-                    <button class="pack-btn"><a class="special-link-a navigate-cardpack-link" href="learn/{{ pack.id }}">Учить слова</a></button>
+                    <button class="pack-btn"><a class="special-link-a navigate-cardpack-link" href="{% url 'learn' pack.id %}">Учить слова</a></button>
                 </div>
             {% endfor %}
         </div>
