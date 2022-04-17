@@ -54,6 +54,7 @@ label{
     align-items: center;
 }
 .header-logo__img{
+    user-select: none;
     width: 110px;
     pointer-events: none;
 }
@@ -452,6 +453,13 @@ footer{
     text-align: center;
 }
 
+/*? ----------  --------- ?*/
+
+.user-is-authenticated .style-login-button{
+    font-size: 1.74em;
+    margin-right: 20px;
+    padding: 0;
+}
 
 /*?? ------------- MEDIA ------------ ??*/
 

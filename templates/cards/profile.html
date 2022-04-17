@@ -1,23 +1,31 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div>
+    <div class="profile-left-section">
         <h3>User data</h3>
         <p>Username: {{ profile_owner.username }}</p>
         <p>Authored {{ packs|length }} pack(s)</p>
     </div>
     <div>
+    <div class="profile-right-section">
         <h3>Pack list:</h3>
+    <div class="cards-wrapper">
         {% for pack in packs %}
-            {{ pack.title }}
-            <ul>
-                <li><a href="{% url 'learn' pack.id %}">Learn</a></li>
-                {% if user.is_authenticated and user == profile_owner %}
-                    <li><a href="{% url 'edit' pack.id %}">Edit</a></li>
-                    <li><a href="{% url 'delete' pack.id %}">Delete</a></li>
-                {% endif %}
-            </ul>
+            <div class="card">
+                <p class="pack-rating">{{ pack.rating }}</p>
+                <p class="pack-title p1">{{ pack.title }}</p>
+                <button class="pack-btn"><a class="special-link-a navigate-cardpack-link" href="{% url 'learn' pack.id %}">Учить слова</a></button>
+                <ul>
+                    {% if user.is_authenticated and user == profile_owner %}
+                        <li><a href="{% url 'edit' pack.id %}">Edit</a></li>
+                        <li><a href="{% url 'delete' pack.id %}">Delete</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+
         {% endfor %}
+    </div>
+    </div>
 
     </div>
 {% endblock %}
