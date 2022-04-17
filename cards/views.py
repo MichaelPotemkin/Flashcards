@@ -19,9 +19,16 @@ def view_pack(request, pack_id):
 
 
 def edit_pack(request, pack_id):
-    pack = Pack.objects.get(id=pack_id)
-    cards = Flashcard.objects.filter(pack_id=pack_id)
-    return render(request, 'cards/edit.html', context={'pack': pack, 'cards': cards})
+    pack = get_object_or_404(Pack, id=pack_id)
+
+    if request.method == 'POST':
+        ...
+    elif request.method == 'GET':
+        if request.user == pack.author:
+            cards = Flashcard.objects.filter(pack_id=pack_id)
+            return render(request, 'cards/edit.html', context={'pack': pack, 'cards': cards})
+        else:
+            return HttpResponseRedirect('/')
 
 
 def delete_pack(request, pack_id):
@@ -33,7 +40,10 @@ def delete_pack(request, pack_id):
 
 
 def create_pack(request):
-    ...
+    if request.method == 'POST':
+        ...
+    else:
+        ...
 
 
 def like_pack(request, pk):
