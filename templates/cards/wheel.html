@@ -9,7 +9,9 @@
     <!-- БЛОК СЛАЙДЕРА КАРТ -->
     <p class="pack-name-p">{{ pack.title }}
         {% if user.is_authenticated and user == pack.author %}
-        - <a href="{% url 'edit' pack_id=pack.id %}"> Edit</a>
+            <p class="text-example edit-text-pack">
+                <a href="{% url 'edit' pack_id=pack.id %}"> Изменить</a>
+            </p>
         {% endif %}
     </p>
 
@@ -40,7 +42,7 @@
             </div>
         </div>
     {% else %}
-        <div>Ой, добавьте, пожалуйста, карточки</div>
+        <p class="examples-text error-text"><i class="fas fa-exclamation warning"></i> Ой, добавьте, пожалуйста, карточки</p>
     {% endif %}
     <div class="like-position">
         <form method="POST" action="{% url 'like_pack' pack.pk %}">

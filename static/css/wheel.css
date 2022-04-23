@@ -65,7 +65,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 45vh;
+    height: 41vh;
     margin-top: 0.3em;
 }
 .swiper-pagination{
@@ -140,12 +140,17 @@
 }
 
 .like-position{
+    margin: 2em 0;
     display: flex;
     justify-content: center;
 }
 .examples-text{
     font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
+    font-size: 16px;
+}
+.edit-text-pack{
+    text-align: center;
+    margin: 4px 0;
 }
 
 footer{
@@ -157,7 +162,7 @@ footer{
 @media (max-width: 510px) {
 
     .position_swiper_slider{
-
+        height: 40vh;
     }
 
     footer{
