@@ -3,14 +3,24 @@
     {% if user.is_authenticated %}
         <h3>{{ pack.title }}</h3>
         {% if user == pack.author %}
-            <h1>You can edit.</h1>
             <form action="{% url 'edit' pack.id %}" method="POST">
                 {% csrf_token %}
 
                 {{ formset.management_form }}
-                {% for form in formset %}
-                    {{ form }}
-                {% endfor %}
+
+                <table>
+                <tr>
+                    <th>Лицевая сторона</th>
+                    <th>Оборотная сторона</th>
+                </tr>
+                    {% for card in formset %}
+                    <tr>
+                    <td>{{ card.front_side }}</td>
+                    <td>{{ card.flip_side }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+
                 <input name="submit" type="submit" value="Сохранить">
             </form>
         {% else %}
