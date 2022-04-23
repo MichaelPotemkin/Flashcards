@@ -1,8 +1,11 @@
 from django.db.models import Count
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from .models import Pack, Flashcard, Like, User
+from .forms import CreatePackForm, FlashcardForm
+from django.forms import modelformset_factory
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -12,25 +15,35 @@ def index(request):
 
 
 def view_pack(request, pack_id):
-    pack = Pack.objects.get(id=pack_id)
+    pack = get_object_or_404(Pack, id=pack_id)
     cards = Flashcard.objects.filter(pack_id=pack_id)
     return render(request, 'cards/wheel.html',
                   context={'pack': pack, 'cards': cards})
 
 
+@login_required
 def edit_pack(request, pack_id):
+    FlashcardFormSet = modelformset_factory(Flashcard, form=FlashcardForm, extra=0, max_num=100)
     pack = get_object_or_404(Pack, id=pack_id)
+    if request.user == pack.author:
+        if request.method == 'POST':
+            formset = FlashcardFormSet(request.POST, queryset=Flashcard.objects.filter(pack_id=pack_id))
 
-    if request.method == 'POST':
-        ...
-    elif request.method == 'GET':
-        if request.user == pack.author:
-            cards = Flashcard.objects.filter(pack_id=pack_id)
-            return render(request, 'cards/edit.html', context={'pack': pack, 'cards': cards})
+            if formset.is_valid():
+                formset.save()
+                return redirect('learn', pack_id=pack_id)
+            else:
+                return render(request, 'cards/edit.html', context={'pack': pack, 'formset': formset})
         else:
-            return HttpResponseRedirect('/')
+            formset = FlashcardFormSet(queryset=Flashcard.objects.filter(pack_id=pack_id))
+
+        return render(request, 'cards/edit.html', context={'pack': pack, 'formset': formset})
+
+    else:
+        return HttpResponseForbidden
 
 
+@login_required
 def delete_pack(request, pack_id):
     pack = get_object_or_404(Pack, id=pack_id)
     if request.user == pack.author:
@@ -39,15 +52,24 @@ def delete_pack(request, pack_id):
     return redirect(request.META.get("HTTP_REFERER"))
 
 
+@login_required
 def create_pack(request):
     if request.method == 'POST':
-        ...
+        form = CreatePackForm(request.POST)
+        if form.is_valid():
+            pack = form.save(commit=False)
+            pack.author = request.user
+            pack.save()
+            return redirect('edit', pack_id=pack.id)
     else:
-        ...
+        form = CreatePackForm()
+
+    return render(request, 'cards/create.html', context={'form': form})
 
 
+@login_required
 def like_pack(request, pk):
-    pack = get_object_or_404(Pack, id=request.POST.get('pack_id'))
+    pack = get_object_or_404(Pack, id=pk)
     like, created = Like.objects.get_or_create(pack=pack, user=request.user)
     if not created:
         like.delete()

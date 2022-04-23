@@ -3,9 +3,8 @@ from django.contrib.auth.models import User
 
 
 class Pack(models.Model):
-    author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, name='author')
     title = models.CharField(max_length=70, null=False)
-    description = models.CharField(max_length=300, null=True)
     likes = models.ManyToManyField(User, through="Like", related_name='pack_likes')
 
     def total_likes(self):

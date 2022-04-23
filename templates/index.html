@@ -10,7 +10,10 @@
                     <h1 class="intro-title">Английские карточки по темам</h1>
                     <p class="intro__under-title-text">Изучайте наборы карточек по различным темам для пополнения
                         всеобщих знаний, а также создавайте свои собственные</p>
-                    <button class="intro-btn">Создать свою коллекцию</button>
+                    <button class="intro-btn">
+                        <a class="special-link-a navigate-cardpack-link"
+                           href="{% url 'create' %}">Создать свою коллекцию</a>
+                    </button>
                 </div>
             </div>
             <div class="intro__right-side">
@@ -48,7 +51,8 @@
                 <div class="card">
                     <p class="pack-rating">{{ pack.rating }}</p>
                     <p class="pack-title p1">{{ pack.title }}</p>
-                    <button class="pack-btn"><a class="special-link-a navigate-cardpack-link" href="{% url 'learn' pack.id %}">Учить слова</a></button>
+                    <button class="pack-btn"><a class="special-link-a navigate-cardpack-link"
+                                                href="{% url 'learn' pack.id %}">Учить слова</a></button>
                 </div>
             {% endfor %}
         </div>

@@ -4,7 +4,7 @@ from .models import Pack, Flashcard, Like, User
 
 
 class PackAdmin(admin.ModelAdmin):
-    fields = ['author', 'title', 'description']
+    fields = ['author', 'title']
 
 
 class FlashcardAdmin(admin.ModelAdmin):
