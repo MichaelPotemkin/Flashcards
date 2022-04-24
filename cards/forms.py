@@ -10,7 +10,12 @@ class CreatePackForm(ModelForm):
 
 
 class FlashcardForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        for field in self.Meta.fields:
+            self.fields[field].required = False
+
     class Meta:
         model = Flashcard
-        fields = ['front_side', 'flip_side']
-
+        fields = ('front_side', 'flip_side')

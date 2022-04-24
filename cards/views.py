@@ -28,19 +28,23 @@ def edit_pack(request, pack_id):
     pack = get_object_or_404(Pack, id=pack_id)
     if request.user == pack.author:
         if request.method == 'POST':
-            formset = FlashcardFormSet(request.POST, queryset=Flashcard.objects.filter(pack_id=pack_id))
-            print(request.POST)
+            formset = FlashcardFormSet(request.POST, queryset=Flashcard.objects.filter(pack=pack))
+
             if formset.is_valid():
                 for form in formset:
                     card = form.save(commit=False)
-                    card.pack = pack
-                    card.save()
+                    if card.front_side and card.flip_side:
+                        card.pack = pack
+                        card.save()
+                    else:
+                        if Flashcard.objects.filter(id=card.id):
+                            card.delete()
                 return redirect('learn', pack_id=pack_id)
             else:
                 return render(request, 'cards/edit.html',
-                              context={'pack': pack, 'formset': formset, 'message': formset.error_messages})
+                              context={'pack': pack, 'formset': formset})
         else:
-            formset = FlashcardFormSet(queryset=Flashcard.objects.filter(pack_id=pack_id))
+            formset = FlashcardFormSet(queryset=Flashcard.objects.filter(pack=pack))
 
         return render(request, 'cards/edit.html', context={'pack': pack, 'formset': formset})
 

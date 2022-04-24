@@ -4,9 +4,6 @@
 {% block content %}
     {% if user.is_authenticated %}
         <h3>{{ pack.title }}</h3>
-        {% if message %}
-            {{ message }}
-        {% endif %}
         {% if user == pack.author %}
             <form action="{% url 'edit' pack.id %}" method="POST">
                 {% csrf_token %}
@@ -16,14 +13,14 @@
                 <div id="cards-list">
                     {% for card in formset %}
                         <div class="card-form">
-                            {{ card.as_p }}
+                            {{ card.as_table }}
                         </div>
                     {% endfor %}
 
                 </div>
 
                 <div id="empty-form" class="hidden">
-                    {{ formset.empty_form.as_p }}
+                    {{ formset.empty_form.as_table }}
                 </div>
                 <button id="create-card" type="button">Создать новую карту</button>
 
