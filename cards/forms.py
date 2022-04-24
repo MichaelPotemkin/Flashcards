@@ -15,6 +15,7 @@ class FlashcardForm(ModelForm):
 
         for field in self.Meta.fields:
             self.fields[field].required = False
+            self.fields[field].label = ''
 
     class Meta:
         model = Flashcard
