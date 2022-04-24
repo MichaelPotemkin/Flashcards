@@ -23,17 +23,22 @@ def view_pack(request, pack_id):
 
 @login_required
 def edit_pack(request, pack_id):
-    FlashcardFormSet = modelformset_factory(Flashcard, form=FlashcardForm, extra=0, max_num=100)
+    FlashcardFormSet = modelformset_factory(Flashcard, form=FlashcardForm, extra=0, max_num=100,
+                                            fields=['front_side', 'flip_side'])
     pack = get_object_or_404(Pack, id=pack_id)
     if request.user == pack.author:
         if request.method == 'POST':
             formset = FlashcardFormSet(request.POST, queryset=Flashcard.objects.filter(pack_id=pack_id))
-
+            print(request.POST)
             if formset.is_valid():
-                formset.save()
+                for form in formset:
+                    card = form.save(commit=False)
+                    card.pack = pack
+                    card.save()
                 return redirect('learn', pack_id=pack_id)
             else:
-                return render(request, 'cards/edit.html', context={'pack': pack, 'formset': formset})
+                return render(request, 'cards/edit.html',
+                              context={'pack': pack, 'formset': formset, 'message': formset.error_messages})
         else:
             formset = FlashcardFormSet(queryset=Flashcard.objects.filter(pack_id=pack_id))
 

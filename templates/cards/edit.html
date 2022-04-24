@@ -1,32 +1,34 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block content %}
     {% if user.is_authenticated %}
         <h3>{{ pack.title }}</h3>
+        {% if message %}
+            {{ message }}
+        {% endif %}
         {% if user == pack.author %}
             <form action="{% url 'edit' pack.id %}" method="POST">
                 {% csrf_token %}
 
                 {{ formset.management_form }}
 
-                <table>
-                    <tbody id="tbody">
-                    <tr>
-                        <th>Лицевая сторона</th>
-                        <th>Оборотная сторона</th>
-                    </tr>
-                        {% for card in formset %}
-                        <tr class="tr-edit">
-                        <td>{{ card.front_side }}</td>
-                        <td>{{ card.flip_side }}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                <div id="cards-list">
+                    {% for card in formset %}
+                        <div class="card-form">
+                            {{ card.as_p }}
+                        </div>
+                    {% endfor %}
+
+                </div>
+
+                <div id="empty-form" class="hidden">
+                    {{ formset.empty_form.as_p }}
+                </div>
+                <button id="create-card" type="button">Создать новую карту</button>
 
                 <input name="submit" type="submit" value="Сохранить">
             </form>
-            <button id="create-card">Создать новую карту</button>
         {% else %}
             <h1>You don't have permission to edit this pack.</h1>
         {% endif %}
