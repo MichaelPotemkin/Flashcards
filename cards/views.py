@@ -3,10 +3,9 @@ from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from .models import Pack, Flashcard, Like, User
-from .forms import CreatePackForm, FlashcardForm
+from .forms import PackForm, FlashcardForm
 from django.forms import modelformset_factory
 from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 
@@ -25,14 +24,18 @@ def view_pack(request, pack_id):
 
 @login_required
 def edit_pack(request, pack_id):
+    pack = get_object_or_404(Pack, id=pack_id)
     FlashcardFormSet = modelformset_factory(Flashcard, form=FlashcardForm, extra=0, max_num=100,
                                             fields=['front_side', 'flip_side'])
-    pack = get_object_or_404(Pack, id=pack_id)
+
     if request.user == pack.author:
         if request.method == 'POST':
             formset = FlashcardFormSet(request.POST, queryset=Flashcard.objects.filter(pack=pack))
+            pack_form = PackForm(request.POST)
+            if formset.is_valid() and pack_form.is_valid():
+                pack.title = pack_form.cleaned_data['title']
+                pack.save()
 
-            if formset.is_valid():
                 for form in formset:
                     card = form.save(commit=False)
                     if card.front_side and card.flip_side:
@@ -46,9 +49,11 @@ def edit_pack(request, pack_id):
                 return render(request, 'cards/edit.html',
                               context={'pack': pack, 'formset': formset})
         else:
+            pack_form = PackForm(initial={'title': pack.title})
             formset = FlashcardFormSet(queryset=Flashcard.objects.filter(pack=pack))
 
-        return render(request, 'cards/edit.html', context={'pack': pack, 'formset': formset})
+        context = {'pack': pack, 'formset': formset, 'pack_form': pack_form}
+        return render(request, 'cards/edit.html', context)
 
     else:
         return HttpResponseForbidden
@@ -66,14 +71,14 @@ def delete_pack(request, pack_id):
 @login_required
 def create_pack(request):
     if request.method == 'POST':
-        form = CreatePackForm(request.POST)
+        form = PackForm(request.POST)
         if form.is_valid():
             pack = form.save(commit=False)
             pack.author = request.user
             pack.save()
             return redirect('edit', pack_id=pack.id)
     else:
-        form = CreatePackForm()
+        form = PackForm()
 
     return render(request, 'cards/create.html', context={'form': form})
 
