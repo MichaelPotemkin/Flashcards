@@ -8,7 +8,10 @@
         {% if user == pack.author %}
             <form action="{% url 'edit' pack.id %}" method="POST">
                 {% csrf_token %}
-                {{ pack_form.as_table }}
+            <p class="text-align-center bold">Title</p>
+                <p class="text-align-center">
+                    {{ pack_form.as_table }}
+                </p>
                 <div class="edit-content-wrapper">
                     <div class="wrapper-table-p-edit">
                         <p class="table-p-edit">Front-side</p>
