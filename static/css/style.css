@@ -655,6 +655,28 @@ footer{
     align-items: center;
     margin: 4em 0 0 0;
 }
+
+/*?-------- PAGINATION ---------?*/
+
+.pagination{
+    display: flex;
+    justify-content: center;
+    margin: 2em 0 0 0;
+}
+.step-links{
+    display: flex;
+    align-items: center;
+}
+.chevron-pagination{
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 900;
+    margin: 0 10px 0 10px;
+}
+.double-pagination{
+    font-size: 26px;
+}
 /*?? ------------- MEDIA ------------ ??*/
 
 @media (max-width:1200px) {

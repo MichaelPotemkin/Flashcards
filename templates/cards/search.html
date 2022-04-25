@@ -18,17 +18,17 @@
         <div class="pagination">
     <span class="step-links">
         {% if packs.has_previous %}
-            <a href="?page=1{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">&laquo; first</a>
-            <a href="?page={{ packs.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">previous</a>
+            <a href="?page=1{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}" class="chevron-pagination double-pagination"><i class="fa-solid fa-circle-chevron-left"></i></a>
+            <a href="?page={{ packs.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}" class="chevron-pagination"><i class="fa-solid fa-chevron-left"></i></a>
         {% endif %}
 
-        <span class="current">
-            Page {{ packs.number }} of {{ packs.paginator.num_pages }}.
+        <span class="current examples-text">
+            Страница {{ packs.number }} из {{ packs.paginator.num_pages }}
         </span>
 
         {% if packs.has_next %}
-            <a href="?page={{ packs.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">next</a>
-            <a href="?page={{ packs.paginator.num_pages }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">last &raquo;</a>
+            <a href="?page={{ packs.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}" class="chevron-pagination"><i class="fa-solid fa-chevron-right"></i></a>
+            <a href="?page={{ packs.paginator.num_pages }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}" class="chevron-pagination double-pagination"><i class="fa-solid fa-circle-chevron-right"></i></a>
         {% endif %}
     </span>
         </div>
