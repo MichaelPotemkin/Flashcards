@@ -3,38 +3,39 @@
 
 {% block content %}
     {% if user.is_authenticated %}
-        <h3 class="edit-title">{{ pack.title }}</h3>
-        <div class="edit-content-wrapper">
-            <div class="wrapper-table-p-edit">
-                <p class="table-p-edit">Front-side</p>
-                <p class="table-p-edit">Flip side</p>
-            </div>
+
 
         {% if user == pack.author %}
             <form action="{% url 'edit' pack.id %}" method="POST">
                 {% csrf_token %}
+                {{ pack_form.as_table }}
+                <div class="edit-content-wrapper">
+                    <div class="wrapper-table-p-edit">
+                        <p class="table-p-edit">Front-side</p>
+                        <p class="table-p-edit">Flip side</p>
+                    </div>
+                    {{ formset.management_form }}
 
-                {{ formset.management_form }}
+                    <div id="cards-list">
+                        {% for card in formset %}
+                            <div class="card-form">
+                                {{ card.as_table }}
+                            </div>
+                        {% endfor %}
 
-                <div id="cards-list">
-                    {% for card in formset %}
-                        <div class="card-form">
-                            {{ card.as_table }}
-                        </div>
-                    {% endfor %}
+                    </div>
 
-                </div>
+                    <div id="empty-form" class="hidden">
+                        {{ formset.empty_form.as_table }}
+                    </div>
+                    <div class="edit-wrapper-buttons">
+                        <button id="create-card" type="button">Создать новую карту</button>
 
-                <div id="empty-form" class="hidden">
-                    {{ formset.empty_form.as_table }}
-                </div>
-                <div class="edit-wrapper-buttons">
-                    <button id="create-card" type="button">Создать новую карту</button>
-
-                    <input id="save-element" name="submit" type="submit" value="Сохранить">
+                        <input id="save-element" name="submit" type="submit" value="Сохранить">
+                    </div>
                 </div>
             </form>
-            </div>
+
             <p class="error-text">Если вы хотите удалить карту, то просто сделайте поле пустым и сохраните пак</p>
         {% else %}
             <h1>You don't have permission to edit this pack.</h1>
