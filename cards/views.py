@@ -7,6 +7,7 @@ from .forms import CreatePackForm, FlashcardForm
 from django.forms import modelformset_factory
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 
 # Create your views here.
@@ -94,12 +95,24 @@ def view_user_profile(request, user_id):
     return render(request, "cards/profile.html", context={'profile_owner': profile_owner, 'packs': packs})
 
 
-class SearchResultsView(ListView):
-    model = Pack
-    template_name = 'cards/search.html'
+def search(request):
+    packs_list = Pack.objects.all()
+    query = request.GET.get('q')
 
-    def get_queryset(self):
-        query = self.request.GET.get("q")
-        object_list = Pack.objects.filter(title__icontains=query).annotate(rating=Count('likes')).order_by('-rating')
+    if query:
+        packs_list = Pack.objects.filter(title__icontains=query).annotate(rating=Count('likes')).order_by('-rating')
 
-        return object_list
+    paginator = Paginator(packs_list, 9)
+    page = request.GET.get('page')
+
+    try:
+        packs = paginator.page(page)
+    except PageNotAnInteger:
+        packs = paginator.page(1)
+    except EmptyPage:
+        packs = paginator.page(paginator.num_pages)
+
+    context = {
+        'packs': packs
+    }
+    return render(request, 'cards/search.html', context)
