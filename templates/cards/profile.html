@@ -8,6 +8,9 @@
             <h3>Данные пользователя</h3>
             <p class="examples-text">Имя пользователя: {{ profile_owner.username }}</p>
             <p class="examples-text">Создано {{ packs|length }} набор(ов)</p>
+            {% if user.is_authenticated and user == profile_owner %}
+            <a class="special-link-a navigate-cardpack-lin intro-btn display-block " href="{% url 'create' %}">Создать набор</a>
+            {% endif %}
         </div>
 
         <div class="profile-right-section">
@@ -62,8 +65,8 @@
         {% endif %}
     </span>
             </div>
-        {% endif %}
-    </div>
+    {% endif %}
+            </div>
 
 
 
