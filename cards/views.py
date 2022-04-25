@@ -6,6 +6,7 @@ from .models import Pack, Flashcard, Like, User
 from .forms import CreatePackForm, FlashcardForm
 from django.forms import modelformset_factory
 from django.contrib.auth.decorators import login_required
+from django.views.generic import ListView
 
 
 # Create your views here.
@@ -91,3 +92,14 @@ def view_user_profile(request, user_id):
     packs = Pack.objects.filter(author=profile_owner).annotate(rating=Count('likes')).order_by('-rating')
 
     return render(request, "cards/profile.html", context={'profile_owner': profile_owner, 'packs': packs})
+
+
+class SearchResultsView(ListView):
+    model = Pack
+    template_name = 'cards/search.html'
+
+    def get_queryset(self):
+        query = self.request.GET.get("q")
+        object_list = Pack.objects.filter(title__icontains=query).annotate(rating=Count('likes')).order_by('-rating')
+
+        return object_list

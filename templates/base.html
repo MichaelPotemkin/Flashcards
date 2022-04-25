@@ -63,9 +63,9 @@
                 {#                    <!--                    </div>-->#}
                 {#                </div>#}
                 <div class="search">
-                    <form method="GET" action="#" class="search-form">
+                    <form method="GET" action="{% url 'search' %}" class="search-form">
                         <label for="main-search" class="visibility-hidden">Flash-cards search</label>
-                        <input id="main-search" type="search" name="q" placeholder="Поиск" autocomplete="off" class="search-input">
+                        <input id="main-search" type="text" name="q" placeholder="Поиск" autocomplete="off" class="search-input">
                         <button class="before-search"></button>
                     </form>
                 </div>

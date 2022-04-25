@@ -9,4 +9,5 @@ urlpatterns = [
     path('delete/<int:pack_id>', views.delete_pack, name='delete'),
     path('like/<int:pk>', views.like_pack, name='like'),
     path('profile/<int:user_id>', views.view_user_profile, name='profile'),
+    path('search', views.SearchResultsView.as_view(), name='search'),
 ]
