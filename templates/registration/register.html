@@ -9,6 +9,9 @@
             {% csrf_token %}
             {{ form.as_p }}
             <button class="intro-btn">Зарегистрироваться</button>
+            <div class="position-login-btn">
+                <a class="login__register-link" href="{% url 'login' %}">Войти</a>
+            </div>
         </form>
     </div>
 <script src={% static "script/app.js" %}></script>

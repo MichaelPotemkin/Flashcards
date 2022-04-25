@@ -135,6 +135,10 @@ label{
     display: flex;
     justify-content: center;
 }
+.login__register-link{
+    margin-top: 1.2em;
+    color: black;
+}
 
 .form-size{
     width: 36%;
@@ -599,6 +603,41 @@ footer{
     margin-top: 2em;
 }
 
+
+.table-p-edit{
+    width: 149px;
+    text-align: center;
+}
+.wrapper-table-p-edit{
+    display: flex;
+}
+.edit-content-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.edit-title{
+    text-align: center;
+    margin: 3em 0 10px 0;
+}
+
+.edit-wrapper-buttons{
+    margin: 2em 0 0 0;
+    display: flex;
+    justify-content: center;
+}
+#create-card{
+    margin-right: 24px;
+}
+#save-element{
+    margin-left:  24px;
+}
+.create-content-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 4em 0 0 0;
+}
 /*?? ------------- MEDIA ------------ ??*/
 
 @media (max-width:1200px) {
@@ -690,6 +729,7 @@ footer{
     .form-size .errorlist {
         width: 50%;
     }
+
 
     /*?---- Адаптив страницы профиля -----?*/
 
