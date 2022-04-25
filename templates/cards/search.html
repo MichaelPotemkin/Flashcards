@@ -1,11 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
-    {% for pack in packs %}
-        <li><a href="{% url 'learn' pack.id %}">{{ pack.title }}</a> by
-            <a href="{% url 'profile' pack.author_id %}">{{ pack.author }}</a> - {{ pack.rating }} likes
-        </li>
-    {% endfor %}
+    <div class="cards-wrapper">
+        {% for pack in packs %}
+            <div class="card">
+                <p class="pack-rating">{{ pack.rating }}</p>
+                <p class="pack-title p1">{{ pack.title }}</p>
+                <button class="pack-btn"><a class="special-link-a navigate-cardpack-link" href="{% url 'learn' pack.id %}">Учить слова</a></button>
+            </div>
+{#            <li><a href="{% url 'learn' pack.id %}">{{ pack.title }}</a> by#}
+{#                <a href="{% url 'profile' pack.author_id %}">{{ pack.author }}</a> - {{ pack.rating }} likes#}
+{#            </li>#}
+        {% endfor %}
+    </div>
 
     {% if packs.has_other_pages %}
         <div class="pagination">
