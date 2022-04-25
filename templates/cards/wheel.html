@@ -41,16 +41,16 @@
                         class="fas fa-chevron-right"></i></span></div>
             </div>
         </div>
+        <div class="like-position">
+            <form method="POST" action="{% url 'like' pack.id %}">
+                {% csrf_token %}
+                <button class="like-btn" type="submit"><span class="examples-text"><i class="fa-solid fa-heart"></i> Понравился пак {{ pack.total_likes }}</span></button>
+            </form>
+        </div>
     {% else %}
         <p class="examples-text error-text"><i class="fas fa-exclamation warning"></i> Ой, добавьте, пожалуйста, карточки</p>
     {% endif %}
-    <div class="like-position">
-        <form method="POST" action="{% url 'like' pack.id %}">
-            {% csrf_token %}
-            <button type="submit"><span
-                    class="examples-text">Нравится</span> {{ pack.total_likes }}</button>
-        </form>
-    </div>
+
 
     <script src={% static "script/app.js" %}></script>
     <script src={% static "/script/wheel.js" %}></script>

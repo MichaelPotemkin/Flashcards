@@ -4,6 +4,7 @@
     justify-content: center;
 }
 .swiper{
+    width: 280px;
     max-width: 280px;
 }
 .pack-name-p{
@@ -143,6 +144,13 @@
     margin: 2em 0;
     display: flex;
     justify-content: center;
+}
+.like-btn{
+    background: #fff;
+    border: 1px solid #000;
+    border-radius: 4px;
+    padding: 4px 8px;
+    cursor: pointer;
 }
 .examples-text{
     font-family: 'Montserrat', sans-serif;
