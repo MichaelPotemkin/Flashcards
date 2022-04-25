@@ -3,10 +3,12 @@
 {% block content %}
     {% for pack in packs %}
         <li><a href="{% url 'learn' pack.id %}">{{ pack.title }}</a> by
-            <a href="{% url 'profile' pack.author_id %}">{{ pack.author }}</a> - {{ pack.rating }} likes</li>
+            <a href="{% url 'profile' pack.author_id %}">{{ pack.author }}</a> - {{ pack.rating }} likes
+        </li>
     {% endfor %}
 
-    <div class="pagination">
+    {% if packs.has_other_pages %}
+        <div class="pagination">
     <span class="step-links">
         {% if packs.has_previous %}
             <a href="?page=1{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">&laquo; first</a>
@@ -22,5 +24,7 @@
             <a href="?page={{ packs.paginator.num_pages }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">last &raquo;</a>
         {% endif %}
     </span>
-</div>
+        </div>
+    {% endif %}
+
 {% endblock %}

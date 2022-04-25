@@ -17,14 +17,17 @@
                     <div class="card">
                         <p class="pack-rating">{{ pack.rating }}</p>
                         <p class="pack-title p1">{{ pack.title }}</p>
-                        <button class="pack-btn"><a class="special-link-a navigate-cardpack-link" href="{% url 'learn' pack.id %}">Учить слова</a></button>
+                        <button class="pack-btn"><a class="special-link-a navigate-cardpack-link"
+                                                    href="{% url 'learn' pack.id %}">Учить слова</a></button>
 
                         {% if user.is_authenticated and user == profile_owner %}
-                        <div class="position-additional-butn">
-                            <a href="{% url 'edit' pack.id %}" class="additional-butn"><i class="fa-solid fa-pencil"></i></a>
-                            <button id="delete-button-{{ pack.id }}" class="additional-butn delete-popup-btn"><i class="fa-solid fa-trash-can"></i>
-                            </button>
-                        </div>
+                            <div class="position-additional-butn">
+                                <a href="{% url 'edit' pack.id %}" class="additional-butn"><i
+                                        class="fa-solid fa-pencil"></i></a>
+                                <button id="delete-button-{{ pack.id }}" class="additional-butn delete-popup-btn"><i
+                                        class="fa-solid fa-trash-can"></i>
+                                </button>
+                            </div>
                         {% endif %}
                     </div>
                     <div class="modal-window-wrapper">
@@ -41,6 +44,26 @@
                 {% endfor %}
             </div>
         </div>
-    </div>
+        {% if packs.has_other_pages %}
+            <div class="pagination">
+    <span class="step-links">
+        {% if packs.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ packs.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ packs.number }} of {{ packs.paginator.num_pages }}.
+        </span>
+
+        {% if packs.has_next %}
+            <a href="?page={{ packs.next_page_number }}">next</a>
+            <a href="?page={{ packs.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+            </div>
+            </div>
+        {% endif %}
+
 
 {% endblock %}

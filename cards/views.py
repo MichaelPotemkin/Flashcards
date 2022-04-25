@@ -92,7 +92,22 @@ def view_user_profile(request, user_id):
     profile_owner = get_object_or_404(User, id=user_id)
     packs = Pack.objects.filter(author=profile_owner).annotate(rating=Count('likes')).order_by('-rating')
 
-    return render(request, "cards/profile.html", context={'profile_owner': profile_owner, 'packs': packs})
+    paginator = Paginator(packs, 9)
+    page = request.GET.get('page')
+
+    try:
+        packs = paginator.page(page)
+    except PageNotAnInteger:
+        packs = paginator.page(1)
+    except EmptyPage:
+        packs = paginator.page(paginator.num_pages)
+
+    context = {
+        "profile_owner": profile_owner,
+        'packs': packs
+    }
+
+    return render(request, "cards/profile.html", context)
 
 
 def search(request):
