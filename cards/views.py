@@ -111,7 +111,7 @@ def view_user_profile(request, user_id):
 
 
 def search(request):
-    packs_list = Pack.objects.all()
+    packs_list = Pack.objects.all().annotate(rating=Count('likes')).order_by('-rating')
     query = request.GET.get('q')
 
     if query:
