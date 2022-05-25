@@ -642,9 +642,24 @@ footer{
     margin: 2em 0 0 0;
     display: flex;
     justify-content: center;
+    align-items: center;
+}
+.edit-btn{
+    background: linear-gradient(to bottom, #FF910A, #DD6D2A);
+    text-align: center;
+    width: 120px;
+    height: 38px;
+    padding: 10px 0;
+    border: none;
+    border-radius: 16px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
 }
 #create-card{
     margin-right: 24px;
+
 }
 #save-element{
     margin-left:  24px;
