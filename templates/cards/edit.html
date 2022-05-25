@@ -41,10 +41,10 @@
 
             <p class="error-text">Если вы хотите удалить карту, то просто сделайте поле пустым и сохраните пак</p>
         {% else %}
-            <h1>You don't have permission to edit this pack.</h1>
+            <h1>У вас недостаточно прав,чтобы редактировать этот пак</h1>
         {% endif %}
     {% else %}
-        <h1>Please log in.</h1>
+        <h1>Пожалуйста зарегистрируйтесь</h1>
     {% endif %}
     <script src={% static "script/edit.js" %}></script>
 {% endblock %}
