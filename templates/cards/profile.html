@@ -51,17 +51,17 @@
             <div class="pagination">
     <span class="step-links">
         {% if packs.has_previous %}
-            <a href="?page=1">&laquo; first</a>
-            <a href="?page={{ packs.previous_page_number }}">previous</a>
+            <a href="?page=1" class="chevron-pagination double-pagination"><i class="fa-solid fa-circle-chevron-left"></i></a>
+            <a href="?page={{ packs.previous_page_number }}" class="chevron-pagination"><i class="fa-solid fa-chevron-left"></i></a>
         {% endif %}
 
         <span class="current">
-            Page {{ packs.number }} of {{ packs.paginator.num_pages }}.
+            Страница {{ packs.number }} из {{ packs.paginator.num_pages }}
         </span>
 
         {% if packs.has_next %}
-            <a href="?page={{ packs.next_page_number }}">next</a>
-            <a href="?page={{ packs.paginator.num_pages }}">last &raquo;</a>
+            <a href="?page={{ packs.next_page_number }}" class="chevron-pagination"><i class="fa-solid fa-chevron-right"></i></a>
+            <a href="?page={{ packs.paginator.num_pages }}" class="chevron-pagination double-pagination"><i class="fa-solid fa-circle-chevron-right"></i></a>
         {% endif %}
     </span>
             </div>
