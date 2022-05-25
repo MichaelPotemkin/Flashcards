@@ -8,7 +8,7 @@
         {% if user == pack.author %}
             <form action="{% url 'edit' pack.id %}" method="POST">
                 {% csrf_token %}
-            <p class="text-align-center bold">Title</p>
+            <p class="text-align-center bold">Название пака</p>
                 <p class="text-align-center">
                     {{ pack_form.as_table }}
                 </p>
